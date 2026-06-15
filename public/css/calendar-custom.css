@@ -1,0 +1,262 @@
+/* ไฟล์: public/css/calendar-custom.css 
+  จัดการหน้าตาปฏิทิน (FullCalendar) สำหรับระบบหลังบ้าน (Dashboard)
+  รองรับทั้งโหมดสว่าง (Light) และโหมดมืด (Dark) อย่างสมบูรณ์
+*/
+
+/* ==========================================================
+   ☀️ 1. โหมดสว่าง (Light Mode) - ค่าเริ่มต้น
+========================================================== */
+
+/* สีตัวอักษรหลักและฟอนต์ (ไม่ไปยุ่งกับขนาดหรือ padding เพื่อรักษาโครงสร้างเดิม) */
+.fc {
+    color: #334155;
+    font-family: 'IBM Plex Sans Thai', sans-serif !important;
+}
+
+/* ชื่อเดือน (หัวปฏิทิน) */
+.fc-toolbar-title {
+    color: #1e293b !important;
+    font-weight: 700 !important;
+}
+
+/* หัวตาราง (อา. จ. อ. พ.) */
+.fc-col-header-cell-cushion {
+    color: #475569 !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+}
+
+/* ตัวเลขวันที่ในแต่ละช่อง */
+.fc-daygrid-day-number {
+    color: #64748b !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+}
+
+/* สีเส้นขอบตาราง */
+.fc-theme-standard td, 
+.fc-theme-standard th, 
+.fc-theme-standard .fc-scrollgrid {
+    border-color: #e2e8f0 !important;
+}
+
+/* ✨ แถบสีคิวรถ (ล็อกสีตัวอักษรเป็นสีขาวเสมอ เพื่อไม่ให้กลืนกับสีพื้นหลัง) */
+.fc-event {
+    cursor: pointer !important;
+    transition: opacity 0.2s ease, transform 0.1s ease;
+    border: none !important;
+    color: #ffffff !important; 
+}
+.fc-event:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* เปลี่ยนเฉพาะ "สี" ของปุ่มหลัก (เดือน, สัปดาห์, รายการ) */
+.fc .fc-button-primary {
+    background-color: #2563eb !important; 
+    border-color: #2563eb !important;
+    color: #ffffff !important;
+    font-weight: 500 !important;
+    text-transform: capitalize !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+}
+.fc .fc-button-primary:hover {
+    background-color: #1d4ed8 !important; 
+    border-color: #1d4ed8 !important;
+}
+.fc .fc-button-primary:not(:disabled):active,
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+    background-color: #1e40af !important; 
+    border-color: #1e40af !important;
+}
+
+/* ตกแต่งสีปุ่ม "วันนี้" (Today) */
+.fc .fc-today-button {
+    background-color: #eff6ff !important; 
+    color: #2563eb !important;
+    border-color: #bfdbfe !important; 
+    font-weight: 600 !important;
+}
+.fc .fc-today-button:disabled {
+    opacity: 0.6 !important;
+}
+
+/* สีไฮไลท์ช่องตารางของ "วันนี้" */
+.fc .fc-day-today {
+    background-color: #f8fafc !important; 
+}
+
+
+/* ==========================================================
+   🌙 2. โหมดมืด (Dark Mode)
+========================================================== */
+
+/* บังคับสีตัวอักษรทั้งหมดให้สว่างขึ้น โดยไม่กระทบโครงสร้าง */
+html.dark .fc {
+    color: #e2e8f0;
+    --fc-page-bg-color: transparent;
+    --fc-neutral-bg-color: #334155;
+    --fc-neutral-text-color: #cbd5e1;
+    --fc-border-color: #334155;
+}
+
+/* ปรับสีชื่อเดือน */
+html.dark .fc-toolbar-title {
+    color: #f8fafc !important;
+}
+
+/* ปรับสีเส้นขอบตาราง */
+html.dark .fc-theme-standard td, 
+html.dark .fc-theme-standard th,
+html.dark .fc-theme-standard .fc-scrollgrid {
+    border-color: #334155 !important;
+}
+
+/* ปรับสีหัวตารางและตัวเลขวันที่ */
+html.dark .fc-col-header-cell-cushion {
+    color: #cbd5e1 !important;
+}
+html.dark .fc-daygrid-day-number {
+    color: #94a3b8 !important;
+}
+
+/* 🌟 แก้สีตัวหนังสือมุมมองสัปดาห์/วัน (all-day และ เวลา) ให้สว่างขึ้น */
+html.dark .fc-timegrid-axis-cushion,
+html.dark .fc-timegrid-slot-label-cushion {
+    color: #cbd5e1 !important;
+}
+
+/* สีพื้นหลังช่อง "วันนี้" */
+html.dark .fc .fc-day-today {
+    background-color: rgba(59, 130, 246, 0.1) !important;
+}
+
+/* โหมด List (รายการ) */
+html.dark .fc .fc-list-event:hover td {
+    background-color: #334155 !important;
+}
+html.dark .fc-list-day-cushion {
+    background-color: #1e293b !important;
+    color: #f8fafc !important;
+}
+
+/* ปรับสี Pop-up ของ FullCalendar (เวลากดดูคิวที่ซ้อนกันเยอะๆ) */
+html.dark .fc-popover {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+}
+html.dark .fc-popover-header {
+    background-color: #334155 !important;
+    color: #f8fafc !important;
+}
+
+/* 🌙 เขียนทับ สีปุ่มหลักสำหรับ Dark Mode ให้กลืนกับระบบ */
+html.dark .fc .fc-button-primary {
+    background-color: #334155 !important; 
+    border-color: #334155 !important;
+    color: #f8fafc !important;
+}
+html.dark .fc .fc-button-primary:hover {
+    background-color: #475569 !important; 
+    border-color: #475569 !important;
+}
+html.dark .fc .fc-button-primary:not(:disabled):active,
+html.dark .fc .fc-button-primary:not(:disabled).fc-button-active {
+    background-color: #2563eb !important; 
+    border-color: #2563eb !important;
+    color: #ffffff !important;
+}
+
+/* 🌙 เขียนทับ สีปุ่ม "วันนี้" (Today) สำหรับ Dark Mode */
+html.dark .fc .fc-today-button {
+    background-color: rgba(59, 130, 246, 0.15) !important; 
+    color: #60a5fa !important; 
+    border-color: rgba(59, 130, 246, 0.3) !important;
+}
+
+/* ==========================================================
+   🛡️ 3. ระบบป้องกันอัตโนมัติสำหรับการ์ดปฏิทิน (Auto Dark Calendar Card)
+========================================================== */
+
+/* บังคับการ์ดสีขาวที่ครอบปฏิทินอยู่ ให้เปลี่ยนเป็นสีเทาเข้มอัตโนมัติ */
+html.dark .bg-white:has(#calendar) {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+}
+
+/* บังคับส่วนหัวของการ์ด (บริเวณที่เขียนว่าปฏิทิน) ให้เป็นสีเทาเข้ม */
+html.dark .bg-white:has(#calendar) .bg-gray-50\/30 {
+    background-color: #0f172a !important;
+    border-color: #334155 !important;
+}
+
+/* เปลี่ยนสีเส้นขอบกั้นระหว่างหัวการ์ดกับปฏิทิน */
+html.dark .bg-white:has(#calendar) .border-b {
+    border-color: #334155 !important;
+}
+
+/* เปลี่ยนสีตัวหนังสือ "ปฏิทินการใช้รถยนต์ส่วนกลาง" */
+html.dark .bg-white:has(#calendar) h2 {
+    color: #f8fafc !important;
+}
+
+/* เปลี่ยนสีข้อความสถานะ "อนุมัติแล้ว / รอพิจารณา" และคำอธิบายใต้หัวข้อ */
+html.dark .bg-white:has(#calendar) p,
+html.dark .bg-white:has(#calendar) span {
+    color: #cbd5e1 !important;
+}
+
+/* ยกเว้น! ไม่เปลี่ยนสี "วงกลมจุดสถานะ" สีเขียว/เหลือง */
+html.dark .bg-white:has(#calendar) span.bg-emerald-500 {
+    background-color: #10b981 !important;
+}
+html.dark .bg-white:has(#calendar) span.bg-amber-500 {
+    background-color: #f59e0b !important;
+}
+
+
+/* ==========================================================
+   🛡️ 4. ระบบป้องกันอัตโนมัติสำหรับการ์ดสถิติด้านบน (Auto Dark Stats Cards)
+========================================================== */
+
+/* เล็งไปที่การ์ดสีขาวที่มีคลาส flex และ items-center ใน grid (สถิติด้านบน) */
+html.dark .grid .bg-white.flex.items-center {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+}
+
+/* เปลี่ยนสีหัวข้อ (เช่น รถยนต์ในระบบ, ผู้ใช้งานทั้งหมด) */
+html.dark .grid .bg-white.flex.items-center h3 {
+    color: #94a3b8 !important; 
+}
+
+/* เปลี่ยนสีตัวเลขสถิติ (เช่น 5, 4, 0) */
+html.dark .grid .bg-white.flex.items-center p {
+    color: #f8fafc !important; 
+}
+
+/* เปลี่ยนสีหน่วย (คัน, คน, รายการ) */
+html.dark .grid .bg-white.flex.items-center p span {
+    color: #cbd5e1 !important;
+}
+
+/* ✨ ปรับสีพื้นหลังโปร่งแสงของไอคอนในแต่ละการ์ดให้กลืนกับโหมดมืด */
+html.dark .grid .bg-white.flex.items-center .bg-blue-100 {
+    background-color: rgba(37, 99, 235, 0.2) !important;
+    color: #60a5fa !important;
+}
+html.dark .grid .bg-white.flex.items-center .bg-green-100 {
+    background-color: rgba(16, 185, 129, 0.2) !important;
+    color: #34d399 !important;
+}
+html.dark .grid .bg-white.flex.items-center .bg-yellow-100 {
+    background-color: rgba(245, 158, 11, 0.2) !important;
+    color: #fbbf24 !important;
+}
+html.dark .grid .bg-white.flex.items-center .bg-indigo-100 {
+    background-color: rgba(99, 102, 241, 0.2) !important;
+    color: #818cf8 !important;
+}

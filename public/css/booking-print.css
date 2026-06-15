@@ -1,0 +1,91 @@
+/* ไฟล์: public/css/booking-print.css */
+
+@media print {
+    @page { size: A4 portrait; margin: 1.5cm; }
+    
+    /* ✨ แก้ปัญหาฟอนต์ไทยสระลอย/หาย ตอนสั่ง Print โดยบังคับใช้ฟอนต์มาตรฐาน */
+    body, .print-container, p, span, div { 
+        background-color: white !important; 
+        color: black !important;
+        -webkit-print-color-adjust: exact; 
+        font-family: 'Sarabun', 'Tahoma', 'Cordia New', sans-serif !important; 
+    }
+    
+    /* 🚫 ซ่อนเมนู Navbar, Sidebar, Header, Footer, โทกเกิลธีม และคลาสที่ใช้ซ่อนตอนปริ้นท์ */
+    #main-nav, #sidebar, header, footer, #theme-toggle, .print\:hidden, .hide-on-print { 
+        display: none !important; 
+    }
+
+    /* เอา Padding รอบๆ หน้าจอออก เพื่อให้ใช้พื้นที่กระดาษเต็มที่ (เหมาะสำหรับระบบ Dashboard) */
+    main { 
+        padding: 0 !important; 
+        margin: 0 !important; 
+        background: white !important;
+        overflow: visible !important;
+    }
+    
+    /* บังคับโทนสว่างตอนปริ้นท์ แม้ผู้ใช้จะเปิดโหมดมืดอยู่ */
+    .dark, .dark * { background-color: white !important; color: black !important; }
+    
+    /* บังคับตัวหนังสือดำล้วน ยกเลิกเงาและสีขอบ (เฉพาะที่ไม่ได้เจาะจง) */
+    * { 
+        color: black !important; 
+        border-color: #cccccc !important; 
+        box-shadow: none !important; 
+    }
+    
+    /* รักษาโครงสร้างสีพื้นหลังอ่อนๆ ให้สวยงาม */
+    .bg-blue-50\/50 { background-color: #eff6ff !important; border: 1px solid #bfdbfe !important; }
+    .bg-gray-50\/30 { background-color: #f9fafb !important; }
+
+    /* ✨ บังคับพิมพ์พื้นหลังให้กล่อง Badge ดิจิทัล */
+    .print-bg-gray {
+        background-color: #f3f4f6 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* -----------------------------------------
+       จัด Layout ให้เอกสารใบจองดูเป็นทางการ
+    ----------------------------------------- */
+    .print-container {
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+    }
+    .print-header {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        border-bottom: 2px solid black !important;
+        background-color: white !important;
+    }
+    .print-box {
+        border: 1px solid #ccc !important;
+        background-color: transparent !important;
+    }
+    .print-signature {
+        display: block !important;
+        page-break-inside: avoid; /* ป้องกันลายเซ็นโดนตัดขาดไปอยู่หน้าถัดไปครึ่งนึง */
+    }
+    .print-signature p {
+        line-height: 1.6 !important; /* ✨ เพิ่มช่องไฟให้สระบน/ล่าง ไม่ให้ทับกัน */
+    }
+    
+    /* -----------------------------------------
+       ข้อยกเว้น: บังคับให้ป้ายสถานะมีสีเหมือนเดิม
+    ----------------------------------------- */
+    .text-\[\#047857\] { color: #047857 !important; } /* สีเขียว: อนุมัติ */
+    .text-\[\#b45309\] { color: #b45309 !important; } /* สีเหลือง: รอพิจารณา */
+    .text-\[\#be123c\] { color: #be123c !important; } /* สีแดง: ไม่อนุมัติ */
+}
+
+/* =========================================
+   แอนิเมชันสถานะรอพิจารณา (หมุนช้าๆ)
+========================================= */
+@keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+    animation: spin-slow 3s linear infinite;
+}
